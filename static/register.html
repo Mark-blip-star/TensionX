@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+
+<div class="row">
+    <form class="col s12" method="post" action="/user/create-user">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="input_text" type="text" data-length="10" name="role">
+                <label for="input_text">Guest
+                    User
+                    Supervisor
+                    Admin
+                </label>
+            </div>
+        </div>
+
+        <div class="input-field inline">
+            <input id="email_inline" type="text" class="validate"  name="email">
+            <label for="email_inline">Email</label>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="input_password" type="text" data-length="10"  name="password">
+                <label for="input_password">password</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="input_rpassword" type="text" data-length="10"  name="rpassword">
+                <label for="input_rpassword">Confirm Password</label>
+            </div>
+        </div>
+
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        </button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.0/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.0/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        .about {
+            display:inline-block;
+            padding-left: 50px;
+        }
+        body{
+            margin-left: 36%;
+        }
+        hr{
+            width:200%;
+            margin-left: -75%;
+        }
+        #info{
+            width: 100%;
+            height:50px;
+            outline: none;
+            border: none;
+            color:black;
+            margin-left: -55%;
+        }
+    </style>
+</head>
+<body>
+    {{#if user}}
+        <div id="images">
+
+            <div class="about">
+                <a id="Guest" href="#" name="{{email}}">Guest</a>
+            </div>
+
+            <div class="about">
+                <a id="User" href="#" name="{{email}}">User</a>
+            </div>
+
+            <div class="about">
+                <a id="Supervisor" href="#" name="{{email}}">Supervisor</a>
+            </div>
+
+            <div class="about">
+                <a id="Admin" href="#" name="{{email}}">Admin</a>
+            </div>
+        </div>
+
+            <hr>
+
+        <input id="info" value = '' disabled>
+    {{/if}}
+<script>
+    const socket = io(`http://localhost:3000`)
+    const infoElement = document.getElementById('info');
+
+    socket.on(`msgToClient`,(msg) => {
+        infoElement.value = msg
+    })
+    const guestElement = document.getElementById('Guest');
+    const userElement = document.getElementById('User');
+    const supervisorElement = document.getElementById('Supervisor');
+    const adminElement = document.getElementById('Admin');
+
+    guestElement.addEventListener(`click`,() => {
+        socket.emit(`submitLoginForm`,{email:guestElement.name,role:guestElement.id})
+    })
+
+    userElement.addEventListener(`click`,() => {
+        socket.emit(`submitLoginForm`,{email:userElement.name,role:userElement.id})
+    })
+
+    supervisorElement.addEventListener(`click`,() => {
+        socket.emit(`submitLoginForm`,{email:supervisorElement.name,role:supervisorElement.id})
+    })
+
+    adminElement.addEventListener(`click`,() => {
+        socket.emit(`submitLoginForm`,{email:adminElement.name,role:adminElement.id})
+    })
+</script>
+
+</body>
+</html>

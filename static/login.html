@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.0/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+  <form method="post" action="/auth/login">
+          <div class="row">
+                  <div class="row">
+                      <div class="input-field col s12">
+                          <input id="email" type="email" class="validate" name="username">
+                          <label for="email">Type Email</label>
+                      </div>
+                  </div>
+          </div>
+
+          <div class="row">
+                  <div class="row">
+                      <div class="input-field col s12">
+                          <input id="password" type="text" class="validate" name="password">
+                          <label for="password">Type password</label>
+                      </div>
+                  </div>
+          </div>
+
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+
+  </form>
+</body>
+</html>
